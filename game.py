@@ -1,22 +1,28 @@
 # --------------------------- INIT ---------------------------
 try:
     import time
+    import re
     from colorama import init, Back
     from zlib import decompress
     from base64 import b64decode
     from sys import exit
 except Exception:
-    print("The game runs best with Python 3.x and the Colorama, Time, zLib, and Base64 Module.") # You only need to install the Colorama module (unless you removed the default ones).
-    exit(0)
+    print("The game runs best with Python 3.x and the Colorama, re, Time, zLib, and Base64 Module.") # You only need to install the Colorama module
+    exit(0) 
+    
 init(autoreset=True)
 items = []
 already_executed = []
+all_commands = ["north","south","east","west","items","map","take","investigate"]
 current_room = "init"
 debug = False
 
-
-def back(item): # Background for the available commands and the map
-    return Back.GREEN + item + Back.RESET
+def c_format(color_string): # Automatic color formatting by replacing words
+    global all_commands
+    temp_string = color_string
+    for word in all_commands:
+        temp_string = re.sub(word, Back.GREEN + word + Back.RESET, temp_string)
+    return temp_string
 
 # --------------------------- BEGINNING ---------------------------
 
@@ -47,7 +53,7 @@ def pre_0():
     else:
         dialogue = ["You wake up in your house.","It's cold inside, and you spot a man running away from your yard."]
         already_executed.append("pre_0")
-    dialogue.append("You can see your current {}, look at the {}, or go {} towards your garden.".format(back("items"),back("map"),back("east")))
+    dialogue.append(c_format("You can see your current items, look at the map, or go east towards your garden."))
     for line in dialogue:
         print(line)
     choice = ""
@@ -60,7 +66,7 @@ def pre_0():
         elif "east" in choice:
             pre_1()
         else:
-            print("Unknown Command. Try items, or map, or a direction.")
+            print(c_format("Unknown Command. Try items, or map, or a direction."))
 
 # GARDEN (pre_1)
 
@@ -74,7 +80,7 @@ def pre_1():
     else:
         dialogue = ["You run towards your garden, but the man has vanished.","There is a mysterious door lying in the middle of the garden."]
         already_executed.append("pre_1")
-    dialogue.append("You can see your current {}, look at the {}, {} the mysterious door, or head {}/back to your house.".format(back("items"),back("map"),back("investigate"),back("west")))
+    dialogue.append(c_format("You can see your current items, look at the map, investigate the mysterious door, or head west/back to your house."))
     for line in dialogue:
         print(line)
     choice = ""
@@ -85,20 +91,20 @@ def pre_1():
         elif "map" in choice:
             pre_map(1)
         elif "investigate" in choice:
-            pre_3()
+            pre_2()
         elif "west" in choice:
             pre_0()
         else:
             print("Unknown Command. Try items, or map, or investigate, or a direction.")
 
-# FALLING INTO THE HOLE (pre_3)
+# FALLING INTO THE HOLE (pre_2)
 
-def pre_3():
+def pre_2():
     global items
     global already_executed
     global current_room
-    current_room = "pre_3"
-    already_executed.append("pre_3")
+    current_room = "pre_2"
+    already_executed.append("pre_2")
     dialogue = ["You open the door.","You can't see the bottom of the hole and accidentally fall inside..."]
     for line in dialogue:
         print(line)
@@ -130,7 +136,7 @@ def post_0():
     else:
         dialogue = ["Your head hurts from the fall.","You don't know you survived.", "There's a door near you."]
         already_executed.append("post_0")
-    dialogue.append("You can see your current {}, look at the {}, {} the door with you, or go {} towards your garden.".format(back("items"),back("map"),back("take"),back("east")))
+    dialogue.append(c_format("You can see your current items, look at the map, take the door with you, or go east towards your garden."))
     for line in dialogue:
         print(line)
     choice = ""
@@ -149,7 +155,7 @@ def post_0():
         elif "east" in choice:
             post_1()
         else:
-            print("Unknown Command. Try items, map, take, or a valid direction.")
+            print(c_format("Unknown Command. Try items, map, take, or a valid direction."))
 
 
 # --------------------------- GAME ---------------------------
@@ -183,7 +189,7 @@ def game_over(s):
 
 
 try:
-    post_0()
+    pre_0()
 except Exception as e:
     print(e)
 
