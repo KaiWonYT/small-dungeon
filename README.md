@@ -4,12 +4,12 @@ A small and simple Python text-based adventure based on little-dungeon
 CHANGELOG 
 -----------------------------
 v0.5 (in progress)
-+ Finish rooms 1-4 in post_game
-+ Encode pre_map with base64 and zlib to prevent missing lines
+- Finish rooms 1-4 in post_game
 
 v0.5
 - Added requirements.txt
 - Optimized code
+- Encode pre_map with base64 and zlib to prevent missing lines
 
 v0.4
 - Uploaded code to Github

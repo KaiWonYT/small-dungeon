@@ -32,15 +32,7 @@ def c_format(color_string): # Automatic color formatting by replacing words
 def pre_map(index):
     room = [" ", " "]
     room[index] = Back.GREEN + "Y" + Back.RESET
-    print("""
-  N               
-W + E             
-  S               
-                  
-      /---+---\   
-      | {} | {} | 
-      \---+---/   
- """.format(room[0],room[1]))
+    print(b'eJzjUlDwU0AFXOEK2gquqEIKCsHoqhQwAFRIX1dXVxuIYxBCNQrVtTACKhQDVaUPVgUAEN0UxQ=='.format(room[0],room[1]))
 # HOUSE (pre_0)
 
 def pre_0():
@@ -119,7 +111,7 @@ def pre_2():
 def post_map(index):
     room = [" "," "," "," "," "," "," "," "," "]
     room[index] = Back.GREEN + "Y" + Back.RESET
-    compressed_post_map = decompress(b64decode('eJzjUlDwU0AF+rq6ujFgFle4graCK4pkjUJ1LZAASSooBKPp0AbS2gpQSQwdcAYXQpc2MkbWCVWMRkAlY9B06uO0Ew6QJGPgOuCSAM1ALos=')).decode("utf-8")
+    compressed_post_map = decompress(b64decode(b'eJzjUlDwU0AF+rq6ujFgFle4graCK4pkjUJ1LZAASSooBKPp0AbS2gpQSQwdcAYXQpc2MkbWCVWMRkAlY9B06uO0Ew6QJGPgOuCSAM1ALos=')).decode("utf-8")
     print(compressed_post_map.format(room[7], room[2],  room[6], room[0], room[1], room[4], room[5], room[3]))
 
 
