@@ -3,14 +3,17 @@ A small and simple Python text-based adventure based on little-dungeon
 
 CHANGELOG 
 -----------------------------
-v0.5 (in progress)
-- Optimize code by making it modular
+v0.6 (in progress)
 - Finish rooms 1-4 in post_game
+- Fix bugs
+- Replace game.py with game-rewrite.py
 
 v0.5
 - Added requirements.txt
 - Optimized code
 - Encode pre_map with base64 and zlib to prevent missing lines
+- Finished making it modular
+- Full code re-write!
 
 v0.4
 - Uploaded code to Github
@@ -18,7 +21,6 @@ v0.4
 - Added functional items
 - Added a game_over scene
 - Encoded post_map with base64 and zlib to prevent missing new lines
-- Removed debug mode 
 
 v0.3
 - Finished pre_game

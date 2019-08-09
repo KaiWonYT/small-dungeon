@@ -12,6 +12,7 @@ except Exception:
 
 from data.player import Player
 from data.map import Map
+
 player = Player()
 map = Map()
     
@@ -43,7 +44,7 @@ def pre_0():
     while choice not in ["east"]: # It's a single list to keep things organized :D
         choice = input("> ").lower()
         if "item" in choice:
-            print(player.items)
+            player.printItems()
         elif "map" in choice:
             map.pre_map(0)
         elif "east" in choice:
@@ -68,7 +69,7 @@ def pre_1():
     while choice not in ["investigate","west"]:
         choice = input("> ").lower()
         if "item" in choice:
-            print(player.items)
+            player.printItems()
         elif "map" in choice:
             map.pre_map(1)
         elif "investigate" in choice:
@@ -114,7 +115,7 @@ def post_0():
     while choice not in ["east"]:
         choice = input("> ").lower()
         if "item" in choice:
-            print(player.items)
+            player.printItems()
         elif "map" in choice:
             map.post_map(0)
         elif "take" in choice:
