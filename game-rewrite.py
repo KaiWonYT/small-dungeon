@@ -45,7 +45,7 @@ def pre_2(player):
         print("")
         time.sleep(1/50)
     print('\x1b[H\x1b[2J', end='') # ANSI codes. This is one reason Colorama is required.
-    post_0()
+    post_0() # Place Holder
 
 def post_0():
     print("To Be Continued!")
