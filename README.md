@@ -4,6 +4,7 @@ A small and simple Python text-based adventure based on little-dungeon
 CHANGELOG 
 -----------------------------
 v0.5 (in progress)
+- Optimize code by making it modular
 - Finish rooms 1-4 in post_game
 
 v0.5
