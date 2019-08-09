@@ -109,7 +109,7 @@ def pre_2():
     for line in dialogue:
         print(line)
     time.sleep(6) # The average human reads about 3 words a second. 16 / 3 is about 5.3; 6 is the closest whole even number which is higher than 5.3.
-    for x in range(50):
+    for _ in range(50):
         print("")
         time.sleep(1/50)
     print('\x1b[H\x1b[2J', end='') # ANSI codes. This is one reason Colorama is required.
@@ -157,6 +157,9 @@ def post_0():
         else:
             print(c_format("Unknown Command. Try items, map, take, or a valid direction."))
 
+def post_1():
+    print("TO BE CONTINUED")
+
 
 # --------------------------- GAME ---------------------------
 
@@ -177,7 +180,7 @@ def game_over(s):
     while choice not in ["y","n"]:
         choice = input("> ").lower()
         if choice == "y":
-            for x in range(50):
+            for _ in range(50):
                 print("")
                 time.sleep(1/50)
             print('\x1b[H\x1b[2J', end='')
@@ -192,12 +195,3 @@ try:
     pre_0()
 except Exception as e:
     print(e)
-
-# Debugging
-
-
-def debug():
-    global debug
-    if debug:
-        for item in [items, already_executed, current_room]:
-            print(item)
